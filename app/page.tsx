@@ -6,10 +6,10 @@ export default function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <Image
           className="dark:invert"
-          src="/next.svg"
+          src="https://picsum.photos/id/237/200/300"
           alt="Next.js logo"
-          width={180}
-          height={38}
+          width={200}
+          height={300}
           priority
         />
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
