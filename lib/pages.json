@@ -1,14 +1,16 @@
-[
-    {
-        "href": "/",
-        "label": "Test"
-    },
-    {
-        "href": "/about",
-        "label": "About"
-    },
-    {
-        "href": "/contact",
-        "label": "Contact us"
-    }
-]
+{
+    "pages": [
+        {
+            "href": "/",
+            "label": "Test"
+        },
+        {
+            "href": "/about",
+            "label": "About"
+        },
+        {
+            "href": "/contact",
+            "label": "Contact us"
+        }
+    ]
+}
