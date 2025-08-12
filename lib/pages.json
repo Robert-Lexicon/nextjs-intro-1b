@@ -11,6 +11,10 @@
         {
             "href": "/contact",
             "label": "Contact"
+        },
+        {
+            "href": "recipes",
+            "label": "Recipes"
         }
     ]
 }
