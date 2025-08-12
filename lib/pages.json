@@ -2,7 +2,7 @@
     "pages": [
         {
             "href": "/",
-            "label": "Test"
+            "label": "Home"
         },
         {
             "href": "/about",
@@ -10,7 +10,7 @@
         },
         {
             "href": "/contact",
-            "label": "Contact us"
+            "label": "Contact"
         }
     ]
 }
