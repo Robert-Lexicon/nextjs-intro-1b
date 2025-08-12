@@ -6,6 +6,7 @@ const data = { title: "undefined", discounted: true };
 export default function Home() {
   //early return to avoid rendering if data is not available
   if (!data) {
+    // https://nextjs.org/docs/app/api-reference/functions/not-found
     // return notFound(); // this would be a 404 page
     return (
       <main>
