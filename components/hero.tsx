@@ -1,6 +1,8 @@
 //we can import our interfaces from a collection of interfaces..
 import { HeroProps } from "@/lib/interfaces";
 
+// https://react.dev/learn/passing-props-to-a-component#passing-props-to-a-component
+
 //history, don't do it this way - not common pattern
 // export function Hero2(props: { title: string; text?: string }) {
 //   return (
