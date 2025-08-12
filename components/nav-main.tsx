@@ -7,6 +7,7 @@ const linkList = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/test", label: "Test" },
 ];
 
 //local to this file
