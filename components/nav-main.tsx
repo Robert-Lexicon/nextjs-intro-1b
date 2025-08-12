@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import data from "@/lib/pages.json";
+import SpaceWrapper from "./space-wrapper";
 
 const linkList = [
   { href: "/", label: "Home" },
@@ -14,9 +16,13 @@ function test() {
 
 export default function NavMain() {
   return (
-    <nav>
-      <ul className="flex gap-4 px-4 md:px-8">
-        {/* {data["pages"].map((link, index) => (
+    <SpaceWrapper>
+      <nav className="flex items-center justify-between">
+        <Link href={"/"}>
+          <Image src="/next.svg" alt="Logo" width={100} height={32} />
+        </Link>
+        <ul className="flex gap-4 ">
+          {/* {data["pages"].map((link, index) => (
           <li key={index}>
             <Link
               className="bg-amber-600 p-4 block text-xl font-bold"
@@ -26,14 +32,15 @@ export default function NavMain() {
             </Link>
           </li>
         ))} */}
-        {linkList.map((link, i) => (
-          <li key={i}>
-            <Link className="p-4 block text-lg font-bold" href={link.href}>
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+          {linkList.map((link, i) => (
+            <li key={i}>
+              <Link className="p-4 block text-lg font-bold" href={link.href}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </SpaceWrapper>
   );
 }

@@ -1,4 +1,5 @@
 import Hero from "@/components/hero";
+import HeroWithChildren from "@/components/hero-with-children";
 import Image from "next/image";
 
 // This is a fake "component" without props, anon parameter
@@ -10,7 +11,17 @@ export default function AboutPage() {
   return (
     <main>
       {/* I can send data into the component with props. For ex title, text... */}
-      <Hero title={"About us"} id={2} />
+      {/* <Hero title={"About us"} id={2} /> */}
+      <HeroWithChildren>
+        {/* everything inside the component is passed as children */}
+        <h1 className="text-6xl text-neutral-100 py-4 font-bold">About us</h1>
+        <p className="text-zinc-50 p-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus magni labore dicta aut atque doloremque a officiis
+          possimus excepturi itaque sit iusto, iure enim eveniet ratione. Saepe
+          quia necessitatibus veritatis.
+        </p>
+      </HeroWithChildren>
       {/* Don't! */}
       {/* {Func("About us")}
       <Func str="About us" /> */}
