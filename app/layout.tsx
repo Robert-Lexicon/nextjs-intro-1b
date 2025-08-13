@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased content-grid `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="full-width">
+        <header className="content-grid">
           <NavMain />
         </header>
         {children}

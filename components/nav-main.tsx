@@ -4,7 +4,7 @@ import data from "@/lib/pages.json";
 
 export default async function NavMain() {
   return (
-    <nav className="flex items-center justify-between">
+    <nav className="breakout flex items-center justify-between">
       <Link href={"/"}>
         <Image
           src="/next.svg"

@@ -8,11 +8,11 @@ export default function MainWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <main className="content-grid full-width">
+    <main className="content-grid">
       <header className="content-grid full-width">
         <Hero title={title} />
       </header>
-      <section className="content-grid space-y-4 mt-8">{children}</section>
+      <section className="space-y-4 mt-8">{children}</section>
     </main>
   );
 }
