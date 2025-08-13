@@ -42,6 +42,7 @@ body {
 
 /* breakout */
 /* see https://www.youtube.com/watch?v=c13gpBrnGEw */
+/* TODO: make tailwind utility */
 .content-grid {
   --spacing-xl: 4rem;
   --spacing-lg: 2rem;
