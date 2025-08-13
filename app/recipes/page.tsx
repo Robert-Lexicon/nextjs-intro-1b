@@ -24,7 +24,10 @@ export default async function Recipes() {
       <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
         {recipes.map((recipe, i) => (
           <li key={i}>
-            <Card recipe={recipe} className="border rounded p-4" />
+            <Card
+              recipe={recipe}
+              className="border border-neutral-300 rounded p-4 shadow-sm"
+            />
           </li>
         ))}
       </ul>
