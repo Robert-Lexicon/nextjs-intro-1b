@@ -1,6 +1,8 @@
 import Card from "@/components/card";
+import Card2 from "@/components/card2";
 import MainWrapper from "@/components/main-wrapper";
 import { Recipe } from "@/lib/interfaces";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 // export async function generateStaticParams() {
@@ -11,6 +13,22 @@ import { notFound } from "next/navigation";
 //   }))
 // }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  // read route params
+  const { id } = await params;
+  const response = await fetch(`https://dummyjson.com/recipes/${id}`);
+  const recipe: Recipe = await response.json();
+
+  return {
+    title: recipe.name,
+    description: recipe.cuisine,
+  };
+}
+
 export default async function Recipes({
   params,
 }: {
@@ -18,25 +36,11 @@ export default async function Recipes({
 }) {
   const { id } = await params;
 
-  // const idStr = (await params).id;
-  // console.log(idStr);
-  const response = await fetch(`https://dummyjson.com/recipes/${id}`);
-
-  // Do this for debugging
-  // const json = await response.json();
-  // console.dir(json, { depth: null });
-
-  const recipe: Recipe = await response.json();
-
-  if (!recipe?.id) return notFound();
-
-  console.dir(recipe, { depth: null });
-  //const recipes: Recipe[] = data["recipes"];
   return (
     <MainWrapper title="Recipes">
       <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
-        <Card
-          recipe={recipe}
+        <Card2
+          id={id}
           className="border border-neutral-300 rounded p-4 shadow-sm"
         />
       </ul>
