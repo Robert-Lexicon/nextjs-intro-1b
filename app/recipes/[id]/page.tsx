@@ -30,7 +30,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Recipes({
+export default async function RecipePage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -46,17 +46,15 @@ export default async function Recipes({
   // const response = fetch(`https://dummyjson.com/recipes/${id}`).then(res=>res.json());
   return (
     <MainWrapper title="Recipes">
-      <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
-        {/* <Card
+      {/* <Card
           recipe={recipe}
           className="border border-neutral-300 rounded p-4 shadow-sm"
         /> */}
-        <Card2
-          id={id}
-          className="border border-neutral-300 rounded p-4 shadow-sm"
-        />
-        {/* <Card3 data={response} /> */}
-      </ul>
+      <Card2
+        id={id}
+        className="border border-neutral-300 rounded p-4 shadow-sm"
+      />
+      {/* <Card3 data={response} /> */}
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta
         culpa veniam iusto voluptate laboriosam itaque, ullam, exercitationem
