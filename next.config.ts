@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { hostname: "picsum.photos" },
       { hostname: "placeholder.pics" },
+      { hostname: "cdn.dummyjson.com" },
     ],
   },
 };

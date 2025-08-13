@@ -14,7 +14,7 @@ export default async function NavMain() {
           className="dark:invert"
         />
       </Link>
-      <ul className="flex gap-4 ">
+      <ul className="flex gap-4">
         {data["pages"].map((link, index) => (
           <li key={index}>
             <Link

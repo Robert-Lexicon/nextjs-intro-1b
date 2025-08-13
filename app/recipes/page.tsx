@@ -1,23 +1,30 @@
+import Card from "@/components/card";
 import MainWrapper from "@/components/main-wrapper";
 import { Recipe } from "@/lib/interfaces";
-import data from "@/lib/recipes.json";
+//import data from "@/lib/recipes.json";
 
-export default function Recipes() {
-  const recipes: Recipe[] = data["recipes"];
+interface RecipeResponse {
+  limit: number;
+  recipes: Recipe[];
+  skip: number;
+  total: number;
+}
+
+export default async function Recipes() {
+  const response = await fetch("https://dummyjson.com/recipes");
+
+  //Do this for debugging
+  // const json = await response.json();
+  // console.dir(json, { depth: null });
+
+  const { recipes }: RecipeResponse = await response.json();
+  //const recipes: Recipe[] = data["recipes"];
   return (
     <MainWrapper title="Recipes">
       <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
-        {recipes.map((recipe) => (
-          <li key={recipe.id} className="border rounded p-4">
-            <article className="space-y-4">
-              <h2 className="text-lg font-bold">{recipe.name}</h2>
-              <ul className="list-disc pl-6">
-                {recipe.ingredients.map((ingredient, index) => (
-                  <li key={index}>{ingredient}</li>
-                ))}
-              </ul>
-              <p>{recipe.instructions}</p>
-            </article>
+        {recipes.map((recipe, i) => (
+          <li key={i}>
+            <Card recipe={recipe} className="border rounded p-4" />
           </li>
         ))}
       </ul>
