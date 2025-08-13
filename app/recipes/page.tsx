@@ -29,6 +29,7 @@ export default async function Recipes() {
   //const recipes: Recipe[] = data["recipes"];
   return (
     <MainWrapper title="Recipes">
+      {/* this is actually not used right here, will try to explain later */}
       {/* https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense */}
       <Suspense fallback={<p>Loading recipes...</p>}>
         <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
