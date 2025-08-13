@@ -13,7 +13,7 @@
             "label": "Contact"
         },
         {
-            "href": "recipes",
+            "href": "/recipes",
             "label": "Recipes"
         }
     ]
