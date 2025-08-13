@@ -1,6 +1,7 @@
 import Card from "@/components/card";
 import MainWrapper from "@/components/main-wrapper";
 import { Recipe } from "@/lib/interfaces";
+import Link from "next/link";
 //import data from "@/lib/recipes.json";
 
 interface RecipeResponse {
@@ -24,10 +25,12 @@ export default async function Recipes() {
       <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
         {recipes.map((recipe, i) => (
           <li key={i}>
-            <Card
-              recipe={recipe}
-              className="border border-neutral-300 rounded p-4 shadow-sm"
-            />
+            <Link href={`/recipes/${recipe.id}`}>
+              <Card
+                recipe={recipe}
+                className="border border-neutral-300 rounded p-4 shadow-sm"
+              />
+            </Link>
           </li>
         ))}
       </ul>
