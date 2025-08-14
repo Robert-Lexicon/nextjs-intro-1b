@@ -21,7 +21,7 @@ async function RecipeList() {
           <Link href={`/recipes/${recipe.id}`}>
             <Card
               recipe={recipe}
-              className="border border-neutral-300 rounded p-4 shadow-sm"
+              className="border border-neutral-300 shadow-sm"
             />
           </Link>
         </li>
