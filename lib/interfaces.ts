@@ -16,3 +16,10 @@ export interface Recipe {
   reviewCount: number;
   mealType: string[];
 }
+
+export interface RecipeResponse {
+  limit: number;
+  recipes: Recipe[];
+  skip: number;
+  total: number;
+}

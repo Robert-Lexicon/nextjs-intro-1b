@@ -12,6 +12,7 @@
   --font-mono: var(--font-geist-mono);
   --font-afacad: var(--font-afacad);
   --font-raleway: var(--font-raleway);
+  --font-serif: var(--font-rokkitt-serif);
 }
 
 @media (prefers-color-scheme: dark) {
