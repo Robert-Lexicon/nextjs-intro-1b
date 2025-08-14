@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Afacad, Geist, Geist_Mono, Raleway } from "next/font/google";
 import "./globals.css";
 import NavMain from "@/components/nav-main";
+
+const afacad = Afacad({
+  variable: "--font-afacad",
+  subsets: ["latin"],
+});
+
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${afacad.variable} ${raleway.variable}  antialiased`}
       >
         <header className="content-grid">
           <NavMain />
