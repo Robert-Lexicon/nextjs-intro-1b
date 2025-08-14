@@ -7,9 +7,8 @@ export async function fetchAllRecipes() {
   return recipes;
 }
 
-export async function fetchAllRecipeById() {
-  const response = await fetch("https://dummyjson.com/recipe/2");
+export async function fetchRecipeById(id: string) {
+  const response = await fetch(`https://dummyjson.com/recipes/${id}`);
   const recipe: Recipe = await response.json();
-
   return recipe;
 }
