@@ -1,28 +1,27 @@
 import Bagdes from "@/components/bagdes";
 import MainWrapper from "@/components/main-wrapper";
 import ReviewStars from "@/components/stars";
-import { fetchRecipeById } from "@/lib/data/recipe";
+import { fetchAllRecipes, fetchRecipeById } from "@/lib/data/recipe";
 import { Recipe } from "@/lib/interfaces";
 import { Metadata } from "next";
 import Image from "next/image";
 
-// export async function generateStaticParams() {
-//   const posts = await fetch('https://.../posts').then((res) => res.json())
+//Ensure the route is statically generated at build time by adding this function (optional)
+export async function generateStaticParams() {
+  const recipes = await fetchAllRecipes();
 
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }))
-// }
+  return recipes.map((recipe) => ({
+    id: recipe.id,
+  }));
+}
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  // read route params
   const { id } = await params;
-  const response = await fetch(`https://dummyjson.com/recipes/${id}`);
-  const recipe: Recipe = await response.json();
+  const recipe: Recipe = await fetchRecipeById(id);
 
   return {
     title: recipe.name,
