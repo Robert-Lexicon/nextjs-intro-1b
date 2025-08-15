@@ -12,7 +12,7 @@ export default function MainWrapper({
       <header className="content-grid full-width">
         <Hero title={title} />
       </header>
-      <section className="space-y-4 mt-8">{children}</section>
+      <section className="space-y-4 my-8">{children}</section>
     </main>
   );
 }
