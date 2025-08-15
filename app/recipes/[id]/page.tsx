@@ -40,37 +40,48 @@ export default async function RecipePage({
 
   return (
     <MainWrapper title={recipe.name}>
-      <div className="flex justify-between gap-4 ">
-        <div className="space-y-4">
-          {/* TODO: hide for screenreaders */}
-          <h2 className="text-xl font-bold">{recipe.name}</h2>
-          <section>
-            <div>
-              <h3 className="font-bold">Cooking time</h3>
-              <div>Preparation: {recipe.prepTimeMinutes} minutes</div>
-              <div>Cooking: {recipe.cookTimeMinutes} minutes</div>
+      <article className="mb-12 space-y-4">
+        <div className="grid md:flex md:justify-between gap-4 ">
+          <div className="space-y-4">
+            {/* TODO: hide for screenreaders */}
+            <h2 className="text-xl font-bold">{recipe.name}</h2>
+            <section>
+              <div>
+                <h3 className="font-bold sr-only">Time needed</h3>
+                <div>Preparation: {recipe.prepTimeMinutes} minutes</div>
+                <div>Cooking: {recipe.cookTimeMinutes} minutes</div>
+              </div>
+            </section>
+            <div className="flex gap-2">
+              <ReviewStars rating={recipe.rating} />({recipe.reviewCount})
             </div>
-          </section>
-          <div className="flex gap-2">
-            Reviews:
-            <ReviewStars rating={recipe.rating} />({recipe.reviewCount})
+            <Bagdes className="bg-neutral-300" strings={recipe.tags} />
+            <section>
+              <h3 className="font-bold">Ingredients</h3>
+              <ul className="list-disc pl-6">
+                {recipe.ingredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
+              </ul>
+            </section>
           </div>
-          <Bagdes className="bg-neutral-300" strings={recipe.tags} />
-          <section>
-            <h3 className="font-bold">Ingredients</h3>
-            <ul className="list-disc pl-6">
-              {recipe.ingredients.map((ingredient, index) => (
-                <li key={index}>{ingredient}</li>
-              ))}
-            </ul>
-          </section>
+          <Image
+            className="w-full md:max-w-[480px] md:w-auto order-first md:order-none"
+            src={recipe.image}
+            alt={recipe.name}
+            width={400}
+            height={400}
+          />
         </div>
-        <Image src={recipe.image} alt={recipe.name} width={400} height={400} />
-      </div>
-      <section>
-        <h3 className="font-bold">Instructions</h3>
-        <p>{recipe.instructions}</p>
-      </section>
+        <section>
+          <h3 className="font-bold">Instructions</h3>
+          <ol className="list-decimal pl-6">
+            {recipe.instructions.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
+          </ol>
+        </section>
+      </article>
     </MainWrapper>
   );
 }

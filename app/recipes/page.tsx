@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 async function RecipeList() {
   const recipes: Recipe[] = await fetchAllRecipes();
   return (
-    <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
+    <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(25ch,1fr))] content-stretch">
       {recipes.map((recipe, i) => (
         <li key={i}>
           <Link href={`/recipes/${recipe.id}`}>
