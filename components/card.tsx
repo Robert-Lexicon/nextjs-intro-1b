@@ -11,8 +11,8 @@ export default function Card({
   className?: string;
 }) {
   return (
-    <article className={`grid space-y-4 ${className}`}>
-      <h2 className="px-4 mb-0 text-lg font-bold">{recipe.name}</h2>
+    <article className={`grid grid-rows-[auto_1fr_auto] gap-4 ${className}`}>
+      <h2 className="px-4 text-lg/5 text-balance font-bold">{recipe.name}</h2>
       <section className="order-first relative">
         <Image
           className="w-full"
@@ -21,7 +21,15 @@ export default function Card({
           width={300}
           height={300}
         />
-        <span className="p-2 font-serif absolute top-0 right-0 dark:text-neutral-950 bg-neutral-100/90">
+        <span
+          className={`p-2 font-serif absolute top-0 right-0 dark:text-neutral-950 ${
+            recipe.difficulty.toLowerCase() === "easy"
+              ? "bg-green-200/90"
+              : recipe.difficulty.toLowerCase() === "medium"
+              ? "bg-orange-300/90"
+              : "bg-neutral-100/90"
+          } `}
+        >
           {recipe.difficulty}
         </span>
       </section>

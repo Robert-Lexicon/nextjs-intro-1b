@@ -5,13 +5,14 @@ import { fetchAllRecipes, fetchRecipeById } from "@/lib/data/recipe";
 import { Recipe } from "@/lib/interfaces";
 import { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 //Ensure the route is statically generated at build time by adding this function (optional)
 export async function generateStaticParams() {
   const recipes = await fetchAllRecipes();
 
   return recipes.map((recipe) => ({
-    id: recipe.id,
+    id: recipe.id.toString(),
   }));
 }
 
@@ -37,12 +38,13 @@ export default async function RecipePage({
   const { id } = await params;
   const recipe: Recipe = await fetchRecipeById(id);
 
+  if (!recipe.id) return notFound();
+
   return (
     <MainWrapper title={recipe.name}>
-      <article className="mb-12 space-y-4">
+      <article className="space-y-4">
         <div className="grid md:flex md:justify-between gap-4 ">
           <div className="space-y-4">
-            {/* TODO: hide for screenreaders */}
             <h2 className="text-xl font-bold">{recipe.name}</h2>
             <section>
               <div>
@@ -64,13 +66,26 @@ export default async function RecipePage({
               </ul>
             </section>
           </div>
-          <Image
-            className="w-full md:max-w-[480px] md:w-auto order-first md:order-none"
-            src={recipe.image}
-            alt={recipe.name}
-            width={400}
-            height={400}
-          />
+          <div className="order-first md:order-none relative">
+            <span
+              className={`p-2 font-serif absolute top-0 right-0 dark:text-neutral-950 ${
+                recipe.difficulty.toLowerCase() === "easy"
+                  ? "bg-green-200/90"
+                  : recipe.difficulty.toLowerCase() === "medium"
+                  ? "bg-orange-300/90"
+                  : "bg-neutral-100/90"
+              } `}
+            >
+              {recipe.difficulty}
+            </span>
+            <Image
+              className="w-full md:max-w-[480px] md:max-h-[480px] md:w-auto "
+              src={recipe.image}
+              alt={recipe.name}
+              width={400}
+              height={400}
+            />
+          </div>
         </div>
         <section>
           <h3 className="font-bold">Instructions</h3>
