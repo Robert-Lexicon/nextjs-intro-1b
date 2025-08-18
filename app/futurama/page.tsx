@@ -31,6 +31,7 @@ export default async function Futurama() {
         }
   }`;
 
+  // you can use a fragment to avoid repeating the same fields in the query
   const charFragment = `fragment characterInfo on Character {
     id
     name
