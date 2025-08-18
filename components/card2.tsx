@@ -1,4 +1,4 @@
-import { Recipe } from "@/lib/interfaces";
+import { Recipe } from "@/lib/interfaces/recipe";
 import Image from "next/image";
 
 export default async function Card2({

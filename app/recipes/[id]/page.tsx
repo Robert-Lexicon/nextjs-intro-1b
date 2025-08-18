@@ -2,7 +2,7 @@ import Bagdes from "@/components/bagdes";
 import MainWrapper from "@/components/main-wrapper";
 import ReviewStars from "@/components/stars";
 import { fetchAllRecipes, fetchRecipeById } from "@/lib/data/recipe";
-import { Recipe } from "@/lib/interfaces";
+import { Recipe } from "@/lib/interfaces/recipe";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";

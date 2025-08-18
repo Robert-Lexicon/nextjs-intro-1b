@@ -1,4 +1,4 @@
-import { Recipe } from "@/lib/interfaces";
+import { Recipe } from "@/lib/interfaces/recipe";
 import Image from "next/image";
 import ReviewStars from "./stars";
 import { Clock } from "lucide-react";
