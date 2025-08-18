@@ -15,6 +15,10 @@
         {
             "href": "/recipes",
             "label": "Recipes"
+        },
+        {
+            "href": "/futurama",
+            "label": "Futurama"
         }
     ]
 }
