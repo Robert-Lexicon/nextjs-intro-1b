@@ -1,75 +1,51 @@
 import MainWrapper from "@/components/main-wrapper";
+import {
+  characterQueryWithFragment,
+  getDataGeneric,
+} from "@/lib/data/futurama";
+import { CharacterResponseData } from "@/lib/interfaces/futurama";
+import { Metadata } from "next";
 import Image from "next/image";
 
-interface Character {
-  id: string;
-  name: string;
-  species: string;
-  image?: string;
-}
-interface ResponseData {
-  data: {
-    characters: {
-      total: number;
-      edges: Character[];
-    };
-  };
-}
+export const metadata: Metadata = {
+  title: "Futurama Characters",
+  description: "A list of Futurama characters",
+};
 
 export default async function Futurama() {
-  const endpoint = "https://futuramaapi.com/graphql";
+  // try {
+  //   const test = await fetch("https://futuramaapi.com/api/characters/87987");
 
-  const query = `
-    query getCharacters {
-        characters {
-            total
-            edges {
-                id
-                name
-                species
-            }
-        }
-  }`;
+  //   console.dir(test.ok, { depth: null });
 
-  // you can use a fragment to avoid repeating the same fields in the query
-  const charFragment = `fragment characterInfo on Character {
-    id
-    name
-    species
-    image
-    status
-    gender
-  }`;
+  //   if (!test.ok) {
+  //     //console.error("Error fetching data from Futurama API");
+  //     throw new Error(`Error status: ${test.status}`);
+  //   }
+  // } catch (error) {
+  //   console.error("oh no" + error);
+  //   throw new Error(`Error status: ${error}`);
+  // }
 
-  const query2 = `
-  query getCharactersWithFragment {
-  characters {
-    edges {
-        ...characterInfo
-    }
-  }
-}${charFragment}`;
-
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query: query2 }),
+  const response = await getDataGeneric<CharacterResponseData>({
+    query: characterQueryWithFragment,
   });
 
-  const result: ResponseData = await response.json();
-  console.dir(result, { depth: null });
+  // if we want to log the response
+  // console.dir(response, { depth: null })
 
-  //get characters from result
-  //const characters = result.data.characters.edges;
+  // get characters from response
+  // const characters = response.body.data.characters.edges;
 
-  //get characters from result by destructuring, by adding : we can name edges as characters
+  // Or get characters from response by destructuring.
+  // By adding : we can rename edges as characters
+
   const {
     characters: { edges: characters },
-  } = result.data;
+  } = response.body.data;
+
   return (
-    <MainWrapper title="Recipes">
+    <MainWrapper title="Futurama Characters">
       <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(25ch,1fr))]">
         {characters.map((character) => (
           <li className="p-4 bg-neutral-300/20 text-center" key={character.id}>
