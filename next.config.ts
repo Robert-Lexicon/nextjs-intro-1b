@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       { hostname: "picsum.photos" },
       { hostname: "placeholder.pics" },
       { hostname: "cdn.dummyjson.com" },
+      { hostname: "futuramaapi.com" },
     ],
   },
 };
