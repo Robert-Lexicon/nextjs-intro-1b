@@ -38,7 +38,14 @@ export default async function Futurama() {
 
   const result: ResponseData = await response.json();
   //   console.dir(result, { depth: null });
-  const characters = result.data.characters.edges;
+
+  //get characters from result
+  //const characters = result.data.characters.edges;
+
+  //get characters from result by destructuring, by adding : we can name edges as characters
+  const {
+    characters: { edges: characters },
+  } = result.data;
   return (
     <ul>
       {characters.map((character) => (
