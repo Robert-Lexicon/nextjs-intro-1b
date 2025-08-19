@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import data from "@/lib/pages.json";
+import data from "@/lib/data/pages.json";
 
 export default async function NavMain() {
   return (
