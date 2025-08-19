@@ -30,12 +30,37 @@ export async function generateMetadata({
   };
 }
 
+//props is an object that contains things we want to pass to the component,
+// params is one them we use on pages with dynamic routes
+
+//alt 1
+//using an interface to define the props for the component/page
+// interface RecipePageProps {
+//   params: Promise<{ id: string }>;
+// }
+
+//then using this interface on our props parameter
+//export default async function RecipePage(props : RecipePageProps) {
+
+//alt 2
+//define the type inside the function parameters instead of using an interface
+// export default async function RecipePage(props: {
+//   params: Promise<{ id: string }>;
+// }) {
+
+//destructure id from the params.props
+// const { id } = await props.params;
+
+//alt 3 - most common way when having less than 3 parameters
+//destructure params from props inside the function parameters
 export default async function RecipePage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  //destructure id from params
   const { id } = await params;
+
   const recipe: Recipe = await fetchRecipeById(id);
 
   if (!recipe.id) return notFound();
