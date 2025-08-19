@@ -2,26 +2,28 @@ const endpoint = "https://futuramaapi.com/graphql";
 
 //if we have many queries we can move these into a separate file instead
 export const characterQueryBasic = `
-    query getCharacters {
-        characters {
-            total
-            edges {
-                id
-                name
-                species
-            }
-        }
-  }`;
+query getCharacters {
+  characters {
+    total
+
+    edges {
+        id
+        name
+        species
+    }
+  }
+}`;
 
 // you can use a fragment to avoid repeating the same things in the query
-const characterFragment = `fragment characterInfo on Character {
-    id
-    name
-    species
-    image
-    status
-    gender
-  }`;
+const characterFragment = `
+fragment characterInfo on Character {
+  id
+  name
+  species
+  image
+  status
+  gender
+}`;
 
 export const characterQueryWithFragment = `
   query getCharactersWithFragment {
