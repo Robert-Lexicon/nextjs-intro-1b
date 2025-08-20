@@ -6,6 +6,7 @@ import {
 import { CharacterResponseData } from "@/lib/interfaces/futurama";
 import { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Futurama Characters",
@@ -13,33 +14,20 @@ export const metadata: Metadata = {
 };
 
 export default async function Futurama() {
-  // try {
-  //   const test = await fetch("https://futuramaapi.com/api/characters/87987");
-
-  //   console.dir(test.ok, { depth: null });
-
-  //   if (!test.ok) {
-  //     //console.error("Error fetching data from Futurama API");
-  //     throw new Error(`Error status: ${test.status}`);
-  //   }
-  // } catch (error) {
-  //   console.error("oh no" + error);
-  //   throw new Error(`Error status: ${error}`);
-  // }
-
   const response = await getDataGeneric<CharacterResponseData>({
     query: characterQueryWithFragment,
   });
 
-  // if we want to log the response
-  // console.dir(response, { depth: null })
+  // if we want to handle errors here before we render the component
+  if (response.status !== 200) {
+    return notFound();
+  }
 
   // get characters from response
   // const characters = response.body.data.characters.edges;
 
   // Or get characters from response by destructuring.
   // By adding : we can rename edges as characters
-
   const {
     characters: { edges: characters },
   } = response.body.data;
