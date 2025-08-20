@@ -35,16 +35,28 @@ export const characterQueryWithFragment = `
 }${characterFragment}`;
 
 export async function getCharacters() {
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query: characterQueryWithFragment }),
-  });
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query: characterQueryWithFragment }),
+    });
 
-  const result = await response.json();
-  return result;
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    //we can log only
+    console.error("Error fetching characters:", error);
+
+    //and/or we can throw an error to be handled by the caller
+    throw new Error(
+      `Failed to fetch characters: ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
+  }
 }
 
 export async function getDataGeneric<T>({
@@ -52,23 +64,28 @@ export async function getDataGeneric<T>({
 }: {
   query: string;
 }): Promise<{ status: number; body: T } | never> {
-  //TODO: handle errors with try/catch here
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // check if query is falsy = null, undefined or empty string. If so it will not be included in the body
+      // (by using ..., aka the spread operator, we will make the falsy body into {} which is valid JSON)
+      body: JSON.stringify({ ...(query && { query }) }),
+    });
 
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // check if query is falsy = null, undefined or empty string. If so it will not be included in the body
-    // (by using ..., aka the spread operator, we will make the falsy body into {} which is valid JSON)
-    body: JSON.stringify({ ...(query && { query }) }),
-  });
+    const body = await response.json();
 
-  const body = await response.json();
-
-  //return the result, we can also return status code if we want to handle errors
-  return {
-    status: response.status,
-    body,
-  };
+    //return the result, we can also return status code or similar if we want to handle errors in the calling component
+    return {
+      status: response.status,
+      body,
+    };
+  } catch (e) {
+    console.error("Error fetching data:", e);
+    throw new Error(
+      `Failed to fetch data: ${e instanceof Error ? e.message : String(e)}`
+    );
+  }
 }
