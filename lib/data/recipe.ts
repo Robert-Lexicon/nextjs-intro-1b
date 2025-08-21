@@ -1,8 +1,8 @@
 import { Recipe, RecipeResponse } from "../interfaces/recipe";
 
-export async function fetchAllRecipes(skip: number = 0, limit: number = 0) {
+export async function fetchAllRecipes(limit = 8, skip = 0) {
   const response = await fetch(
-    `https://dummyjson.com/recipes?skip=${skip}&limit=${limit}`
+    `https://dummyjson.com/recipes?limit=${limit}&skip=${skip}`
   );
   const { recipes }: RecipeResponse = await response.json();
 
