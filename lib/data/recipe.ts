@@ -14,3 +14,13 @@ export async function fetchRecipeById(id: string) {
   const recipe: Recipe = await response.json();
   return recipe;
 }
+
+export async function fetchSearchRecipes(query: string) {
+  const response = await fetch(
+    //'https://dummyjson.com/recipes/search?q=Margherita'
+    `https://dummyjson.com/recipes/search?q=${query}`
+  );
+  const { recipes, total }: RecipeResponse = await response.json();
+
+  return { recipes, total };
+}
