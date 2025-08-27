@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 
 //Ensure the route is statically generated at build time by adding this function (optional)
 export async function generateStaticParams() {
-  const recipes = await fetchAllRecipes();
+  const { recipes } = await fetchAllRecipes();
 
   return recipes.map((recipe) => ({
     id: recipe.id.toString(),
