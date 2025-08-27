@@ -1,7 +1,6 @@
 import Card from "@/components/card";
 import MainWrapper from "@/components/main-wrapper";
 import { fetchAllRecipes } from "@/lib/data/recipe";
-import { Recipe } from "@/lib/interfaces/recipe";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
