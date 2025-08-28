@@ -43,10 +43,12 @@ export default async function Poke({
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const { query = "", random } = await searchParams;
-  const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1025");
 
   const { results }: { results: PokemonShort[] } = await response.json();
   // console.log(results);
+
+  console.log(results.length);
 
   //find first only
   //use toLowerCase to make it case insensitive
