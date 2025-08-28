@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { hostname: "placeholder.pics" },
       { hostname: "cdn.dummyjson.com" },
       { hostname: "futuramaapi.com" },
+      { hostname: "raw.githubusercontent.com" },
     ],
   },
 };
