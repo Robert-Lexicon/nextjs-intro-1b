@@ -3,7 +3,7 @@ import Form from "next/form";
 export default function SearchWForm() {
   return (
     //leave action empty if using same path in url or add "/search/" or whatever your url is where you render the result
-    //this overwrites old searchparams there are any from pagination or such, so be careful
+    //this DOES NOT overwrite old searchparams but instead merges them!
     <Form className="flex gap-2" action="">
       <label className="sr-only" htmlFor="search">
         Search
