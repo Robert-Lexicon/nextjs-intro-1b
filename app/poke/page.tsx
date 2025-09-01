@@ -103,7 +103,7 @@ export default async function Poke({
 
       <Search placeholder="Search for pokemon" />
       <SearchWButton />
-      <div>
+      {/* <div>
         <h2 className="font-bold">Filtered only</h2>
         <div className="flex gap-2 flex-wrap">
           {allPokemons.map((p) => (
@@ -112,7 +112,7 @@ export default async function Poke({
             </a>
           ))}
         </div>
-      </div>
+      </div> */}
       <div>
         <h2 className="font-bold">Refetched</h2>
         {allPokemonData.map((p) => (
@@ -122,20 +122,25 @@ export default async function Poke({
         ))}
       </div>
       {/* Here we take our 4 random nrs and loop them out into a random featured section */}
-      <div className="grid grid-cols-4 gap-4">
-        {randomFeatured.map((r) => (
-          <Suspense
-            key={r}
-            fallback={
-              <div className="animate-pulse w-58 h-65 bg-neutral-400/70 border rounded border-neutral-400 p-4">
-                Loading...
-              </div>
-            }
-          >
-            <PokemonCard id={Number(r)} />
-          </Suspense>
-        ))}
-      </div>
+      <section>
+        <h2 className="font-jersey text-4xl text-center m-4">
+          Featured Pokemon
+        </h2>
+        <div className="grid grid-cols-4 gap-4">
+          {randomFeatured.map((r) => (
+            <Suspense
+              key={r}
+              fallback={
+                <div className="animate-pulse w-58 h-65 bg-neutral-400/70 border rounded border-neutral-400 p-4">
+                  Loading...
+                </div>
+              }
+            >
+              <PokemonCard id={Number(r)} />
+            </Suspense>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

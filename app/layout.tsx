@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Afacad, Geist, Geist_Mono, Raleway, Rokkitt } from "next/font/google";
+import {
+  Afacad,
+  Geist,
+  Geist_Mono,
+  Jersey_10,
+  Raleway,
+  Rokkitt,
+} from "next/font/google";
 import "./globals.css";
 import NavMain from "@/components/nav-main";
 
@@ -11,6 +18,12 @@ const afacad = Afacad({
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
+});
+
+const jersey = Jersey_10({
+  variable: "--font-jersey",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const geistSans = Geist({
@@ -41,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${afacad.variable} ${raleway.variable} ${rokkitt.variable}  antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${afacad.variable} ${raleway.variable} ${rokkitt.variable} ${jersey.variable}  antialiased`}
       >
         <header className="content-grid">
           <NavMain />

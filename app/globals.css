@@ -13,6 +13,7 @@
   --font-afacad: var(--font-afacad);
   --font-raleway: var(--font-raleway);
   --font-serif: var(--font-rokkitt-serif);
+  --font-jersey: var(--font-jersey);
 }
 
 @media (prefers-color-scheme: dark) {
