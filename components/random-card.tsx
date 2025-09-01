@@ -1,4 +1,5 @@
 import { tagColors } from "@/lib/data/tag-colors";
+import { tagColors } from "@/lib/data/tag-colors";
 import Image from "next/image";
 
 interface PokemonFull {
@@ -6,6 +7,7 @@ interface PokemonFull {
   weight: number;
   height: number;
   id: number;
+  types: Array<{ type: { name: string } }>;
   types: Array<{ type: { name: string } }>;
   sprites: {
     other: {
